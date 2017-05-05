@@ -23,11 +23,20 @@ class Search extends Component {
       return null;
     }
 
+    let searchTerm;
+
+    if(this.state.searchTerm.split(" ").length > 1) {
+      searchTerm = this.state.searchTerm.split(" ").join("+");
+    } else {
+      searchTerm = this.state.searchTerm;
+    }
+
     const apiKey = '&api_key=f756f0c479cd4f73ea7a0b361c580cab';
     let baseUrl = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&nojsoncallback=1&format=json';
-    baseUrl = baseUrl + apiKey + `&tags=${this.state.searchTerm}`;
+    baseUrl = baseUrl + apiKey + `&tags=${searchTerm}`;
+    console.log(searchTerm);
 
-    fetch(baseUrl, { mode: 'no-cors'}).then(response => response.json())
+    fetch(baseUrl).then(response => response.json())
       .then(images => {
       this.props.updateFromChild("images", images.photos.photo);
     })

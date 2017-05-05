@@ -18,11 +18,10 @@ class Detail extends Component {
 
     fetch(baseUrl).then(response => response.json())
     .then(imageDetail => {
-      const date = new Date(parseInt(imageDetail.photo.dateuploaded, 10)).toString();
-
-
+      const date = new Date(parseInt(imageDetail.photo.dateuploaded, 10)*1000);
+  
       this.setState({
-        date: date,
+        date: date.toString(),
         description: imageDetail.photo.description._content});
     });
   }

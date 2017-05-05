@@ -28,9 +28,18 @@ class App extends Component {
 
   detailImage() {
     if (this.state.detail) {
-      return <Detail updateFromChild={this.updateFromChild} image={this.state.detailImage} />;
+      return (
+        <div className="main">
+          <Detail updateFromChild={this.updateFromChild} image={this.state.detailImage} />
+        </div>
+      );
     } else {
-      return <Display updateFromChild={this.updateFromChild} images={this.state.images} />;
+      return (
+        <div className="main">
+          <Search updateFromChild={this.updateFromChild} />
+          <Display updateFromChild={this.updateFromChild} images={this.state.images} />
+        </div>
+      );
     }
   }
 
@@ -40,7 +49,6 @@ class App extends Component {
         <div className="App-header">
           <h2>Flickr Search!</h2>
         </div>
-        <Search updateFromChild={this.updateFromChild} />
         { this.detailImage() }
       </div>
     );

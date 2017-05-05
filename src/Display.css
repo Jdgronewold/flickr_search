@@ -22,3 +22,14 @@
 .image-item img:hover {
   box-shadow: 2px 2px 15px grey;
 }
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-item img {
+  margin: 10px;
+}

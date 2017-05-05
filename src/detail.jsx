@@ -18,9 +18,10 @@ class Detail extends Component {
 
     fetch(baseUrl).then(response => response.json())
     .then(imageDetail => {
+      debugger
       this.setState({
         date: imageDetail.photo.dateuploaded,
-        description: imageDetail.photo.description});
+        description: imageDetail.photo.description._content});
     });
   }
 
